@@ -1,0 +1,220 @@
+================================================================================
+SISTEMA DE ANÁLISE DE TENDÊNCIAS EM 10 NICHOS COM IA - POC 60 DIAS
+================================================================================
+
+🚀 COMECE AQUI - 3 COMANDOS PARA RODAR TUDO
+
+1. Clone o repositório:
+   git clone https://github.com/euallaa-hub/blogs-automation-poc.git
+   cd blogs-automation-poc
+
+2. Inicie os containers:
+   docker-compose up -d
+
+3. Aguarde 30 segundos e acesse:
+   - Metabase: http://localhost:3000
+   - n8n: http://localhost:5678 (admin / senha123)
+   - Adminer: http://localhost:8080
+
+================================================================================
+ARQUIVOS IMPORTANTE
+================================================================================
+
+📖 README.md
+   Visão geral do projeto, arquitetura, ferramentas usadas, ROI.
+   LEIA PRIMEIRO!
+
+🪟 SETUP_WINDOWS.md
+   Guia passo-a-passo para Windows em português.
+   - Pré-requisitos
+   - Como instalar Docker
+   - Como clonar e executar
+   - Troubleshooting
+
+🐋 docker-compose.yml
+   Arquivo Docker que orquestra tudo automaticamente:
+   - PostgreSQL (banco de dados)
+   - Metabase (dashboards)
+   - n8n (automação)
+   - Adminer (gerenciador DB)
+
+🗄️ init.sql
+   Script SQL que cria as 10 tabelas de nichos:
+   1. Tecnologia Consumer
+   2. Beleza & Skincare
+   3. Marketing Digital
+   4. Casa & Decoração
+   5. IA & Tecnologia
+   6. Finanças Pessoais
+   7. Saúde & Bem-estar
+   8. Pets & Animais
+   9. Sustentabilidade
+   10. Educação Online
+
+================================================================================
+📊 ACESSOS APÓS INICIALIZAR
+================================================================================
+
+🌐 Metabase (Dashboard Central)
+   URL: http://localhost:3000
+   Primeira vez: Criar conta (usar seu email)
+   Prioridade: ALTA - aqui você vê todos os dados
+
+⚙️ n8n (Automação de Workflows)
+   URL: http://localhost:5678
+   Login: admin
+   Senha: senha123
+   Prioridade: ALTA - aqui você configura fluxos de coleta
+
+💾 Adminer (Gerenciador de Banco de Dados)
+   URL: http://localhost:8080
+   Sistema: PostgreSQL
+   Servidor: postgres
+   Usuário: admin
+   Senha: senha123
+   Banco: blogs_db
+   Prioridade: MÉDIA - para ver dados sem dashboard
+
+🐘 PostgreSQL (Banco de Dados)
+   Host: localhost
+   Port: 5432
+   Usuário: admin
+   Senha: senha123
+   Banco: blogs_db
+   Prioridade: BAIXA - acesso CLI se precisar
+
+================================================================================
+🛠️ PRÓXIMOS PASSOS (Após tudo rodar)
+================================================================================
+
+[FASE 1] Setup Básico
+  ☐ Confirmar que todos os 4 containers estão "Up"
+  ☐ Acessar Metabase e criar conta
+  ☐ Acessar n8n e fazer login
+  ☐ Acessar Adminer e testar conexão
+  ☐ Executar init.sql no Adminer (SQL command)
+
+[FASE 2] Conectar APIs
+  ☐ Gerar API Key do Google Trends (pytrends - automática)
+  ☐ Gerar Bearer Token do Twitter/X API
+  ☐ Gerar API Key do NewsAPI
+  ☐ Gerar credenciais do Reddit
+  ☐ Gerar API Key do YouTube
+
+[FASE 3] Criar Scripts de Coleta
+  ☐ collect_google_trends.py
+  ☐ collect_twitter.py
+  ☐ collect_news.py
+  ☐ collect_reddit.py
+  ☐ collect_youtube.py
+
+[FASE 4] Automação com n8n
+  ☐ Criar workflow para Google Trends
+  ☐ Criar workflow para Twitter
+  ☐ Criar workflow para NewsAPI
+  ☐ Agendar execução a cada 2 horas
+
+[FASE 5] Análise e Scoring
+  ☐ Implementar algoritmo de viralidade
+  ☐ Integrar ChatGPT para análise
+  ☐ Criar triggers para score > 7.5
+
+[FASE 6] Geração de Conteúdo
+  ☐ Conectar ChatGPT Plus
+  ☐ Conectar Perplexity Pro
+  ☐ Gerar posts automáticos
+  ☐ Buscar imagens no Unsplash
+  ☐ Buscar vídeos no YouTube
+
+[FASE 7] Dashboards
+  ☐ Criar dashboard Principal (Overview)
+  ☐ Criar 10 dashboards (um por nicho)
+  ☐ Criar dashboard de Performance
+  ☐ Criar dashboard de Posts Prontos
+
+================================================================================
+💰 INVESTIMENTO (60 DIAS)
+================================================================================
+
+FERRAMENTAS GRATUITAS:
+✅ Docker Desktop: R$ 0
+✅ PostgreSQL: R$ 0
+✅ n8n: R$ 0
+✅ Metabase: R$ 0
+✅ APIs (tier gratuita): R$ 0
+
+FERRAMENTAS PAGAS:
+💳 Perplexity Pro: R$ 120 (60 dias)
+💳 ChatGPT Plus: R$ 120 (60 dias)
+
+TOTAL: ~R$ 240 (ou R$ 0 com alternativas gratuitas)
+
+================================================================================
+📈 RESULTADO ESPERADO (60 DIAS)
+================================================================================
+
+✅ 2.800-4.200 posts sugeridos
+✅ 20-30 posts por dia
+✅ 10 nichos monitorados 24/7
+✅ Score de viralidade calculado
+✅ Dashboard centralizado com métricas
+✅ Sistema pronto para escalar
+✅ Conhecimento de automação + IA
+
+================================================================================
+⚡ DICAS IMPORTANTES
+================================================================================
+
+1. Sua máquina:
+   - Core i5: ✅ Suficiente
+   - 8GB RAM: ✅ Suficiente (containers usam ~2-3GB)
+   - 120GB SSD: ✅ Suficiente
+
+2. Velocidade:
+   - Setup inicial: ~5-10 minutos
+   - Primeira coleta: ~2-5 minutos
+   - Geração de conteúdo: ~30 segundos por post
+
+3. Troubleshooting:
+   - Porta em uso? Mude em docker-compose.yml
+   - Docker não inicia? Reinicie Docker Desktop
+   - Containers caem? docker-compose logs -f
+
+4. Performance:
+   - Para melhor performance, rode durante 1-2 horas
+   - Deixe a coleta rodar 24/7
+   - Dashboard atualiza a cada 5 minutos
+
+================================================================================
+📞 SUPORTE
+================================================================================
+
+Problema com Docker? Veja SETUP_WINDOWS.md
+Pergunta sobre arquitetura? Veja README.md
+Problema com setup? Abra uma Issue no GitHub
+
+Repositório: https://github.com/euallaa-hub/blogs-automation-poc
+
+================================================================================
+🎯 STATUS
+================================================================================
+
+✅ Repositório criado
+✅ docker-compose.yml pronto
+✅ Banco de dados pronto
+✅ Estrutura de 10 nichos pronta
+✅ Documentação em português
+
+⏳ Aguardando: Docker setup em sua máquina
+
+================================================================================
+
+🚀 BOA SORTE! Comece agora:
+
+git clone https://github.com/euallaa-hub/blogs-automation-poc.git
+cd blogs-automation-poc
+docker-compose up -d
+
+Em 30 segundos você terá tudo rodando! 🎉
+
+===============================================================================
