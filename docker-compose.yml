@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-blogs
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: senha123
+      POSTGRES_DB: blogs_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - blog-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin"]
+      interval: 10s
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: metabase-blogs
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: blogs_db
+      MB_DB_USER: admin
+      MB_DB_PASS: senha123
+      MB_DB_HOST: postgres
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - blog-network
+
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n-blogs
+    environment:
+      N8N_BASIC_AUTH_ACTIVE: "true"
+      N8N_BASIC_AUTH_USER: admin
+      N8N_BASIC_AUTH_PASSWORD: senha123
+      DB_TYPE: postgresdb
+      DB_POSTGRESDB_HOST: postgres
+      DB_POSTGRESDB_DATABASE: blogs_db
+      DB_POSTGRESDB_USER: admin
+      DB_POSTGRESDB_PASSWORD: senha123
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      - postgres
+    networks:
+      - blog-network
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer-blogs
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - blog-network
+
+volumes:
+  postgres_data:
+  n8n_data:
+
+networks:
+  blog-network:
+    driver: bridge
